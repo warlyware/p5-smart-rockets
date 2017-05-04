@@ -1,14 +1,19 @@
+var rocket;
+
 function setup() {
     createCanvas(400, 300);
+    rocket = new Rocket();
 }
 
 function draw() {
     background(0);
+    rocket.update();
+    rocket.show();
 }
 
 function Rocket() {
-    this.position = createVector();
-    this.velocity = createVector();
+    this.position = createVector(width/2, height);
+    this.velocity = createVector(0, -1);
     this.acceleration = createVector();
 
     this.applyForce = function(force) {
@@ -19,5 +24,14 @@ function Rocket() {
         this.velocity.add(this.acceleration);
         this.position.add(this.velocity);
         this.acceleration.mult(0);
+    }
+
+    this.show = function() {
+        push();
+        translate(this.position.x, this.position.y);
+        rotate(this.velocity.heading());
+        rectMode(CENTER);
+        rect(0, 0, 50, 10);
+        pop();
     }
 }
