@@ -1,14 +1,13 @@
-var rocket;
+var population;
 
 function setup() {
     createCanvas(400, 300);
-    rocket = new Rocket();
+    population = new Population();
 }
 
 function draw() {
     background(0);
-    rocket.update();
-    rocket.show();
+    population.run();
 }
 
 function Population() {
@@ -17,6 +16,12 @@ function Population() {
 
     for (var i = 0; i < this.populationSize; i++) {
         this.rockets[i] = new Rocket();
+    }
+    this.run = function() {
+        for (var i = 0; i < this.populationSize; i++) {
+            this.rockets[i].update();
+            this.rockets[i].show();
+        }
     }
 }
 
