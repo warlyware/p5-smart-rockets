@@ -12,7 +12,7 @@ function draw() {
 
 function Population() {
     this.rockets = [];
-    this.populationSize = 100;
+    this.populationSize = 50;
 
     for (var i = 0; i < this.populationSize; i++) {
         this.rockets[i] = new Rocket();
@@ -42,10 +42,12 @@ function Rocket() {
 
     this.show = function() {
         push();
+        noStroke();
+        fill(255, 100);
         translate(this.position.x, this.position.y);
         rotate(this.velocity.heading());
         rectMode(CENTER);
-        rect(0, 0, 50, 10);
+        rect(0, 0, 25, 5);
         pop();
     }
 }
