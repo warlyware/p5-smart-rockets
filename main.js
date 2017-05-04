@@ -11,9 +11,18 @@ function draw() {
     rocket.show();
 }
 
+function Population() {
+    this.rockets = [];
+    this.populationSize = 100;
+
+    for (var i = 0; i < this.populationSize; i++) {
+        this.rockets[i] = new Rocket();
+    }
+}
+
 function Rocket() {
     this.position = createVector(width/2, height);
-    this.velocity = createVector(0, -1);
+    this.velocity = p5.Vector.random2D();
     this.acceleration = createVector();
 
     this.applyForce = function(force) {
